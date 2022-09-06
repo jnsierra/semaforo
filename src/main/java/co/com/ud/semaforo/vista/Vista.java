@@ -4,10 +4,8 @@
  */
 package co.com.ud.semaforo.vista;
 
-import co.com.ud.semaforo.Semaforo;
 import co.com.ud.semaforo.controlador.SemaforoControlador;
-import co.com.ud.semaforo.enumeration.ColorEnum;
-import co.com.ud.semaforo.modelo.SemaforoVehicularModel;
+import co.com.ud.semaforo.modelo.SemaforoModel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,11 +18,13 @@ import lombok.Setter;
 public class Vista extends javax.swing.JFrame {
 
     private Lienzo lienzo = new Lienzo();
-    private SemaforoVehicularModel semaforo;
+    private SemaforoModel semaforoVehicular;
+    private SemaforoModel semaforoPeatonal;
     private SemaforoControlador semaforoControlador;
 
     /**
      * Creates new form Vista
+     * @param semaforoControlador Controlador de la vista
      */
     public Vista(SemaforoControlador semaforoControlador) {
         this.semaforoControlador = semaforoControlador;
@@ -34,7 +34,8 @@ public class Vista extends javax.swing.JFrame {
     }
 
     public void repintarSemaforos() {
-        lienzo.setSemaforoVehicularModel(semaforo);
+        lienzo.setSemaforoVehicular(semaforoVehicular);
+        lienzo.setSemaforoPeatonal(semaforoPeatonal);
         lienzo.repaint();
         lienzo.revalidate();
     }
@@ -54,6 +55,7 @@ public class Vista extends javax.swing.JFrame {
 
         grupoUno = new javax.swing.ButtonGroup();
         grupoDos = new javax.swing.ButtonGroup();
+        tipoSemaforoGroup = new javax.swing.ButtonGroup();
         opcRojo = new javax.swing.JRadioButton();
         opcAmarillo = new javax.swing.JRadioButton();
         opcVerde = new javax.swing.JRadioButton();
@@ -61,11 +63,14 @@ public class Vista extends javax.swing.JFrame {
         opcEncender = new javax.swing.JRadioButton();
         opcApagar = new javax.swing.JRadioButton();
         opcRomper = new javax.swing.JRadioButton();
+        checkBoxPeatonal = new javax.swing.JCheckBox();
+        checkBoxVehicular = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         grupoUno.add(opcRojo);
+        opcRojo.setSelected(true);
         opcRojo.setText("Rojo");
         opcRojo.setToolTipText("");
         getContentPane().add(opcRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(649, 40, -1, -1));
@@ -79,13 +84,14 @@ public class Vista extends javax.swing.JFrame {
         getContentPane().add(opcVerde, new org.netbeans.lib.awtextra.AbsoluteConstraints(649, 92, -1, -1));
 
         ejecutorBoton.setText("Ejecutar");
-        getContentPane().add(ejecutorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 130, -1, -1));
+        getContentPane().add(ejecutorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 170, -1, -1));
 
         grupoDos.add(opcEncender);
         opcEncender.setText("Encender");
         getContentPane().add(opcEncender, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 40, -1, -1));
 
         grupoDos.add(opcApagar);
+        opcApagar.setSelected(true);
         opcApagar.setText("Apagar");
         getContentPane().add(opcApagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 66, -1, -1));
 
@@ -93,10 +99,19 @@ public class Vista extends javax.swing.JFrame {
         opcRomper.setText("Romper");
         getContentPane().add(opcRomper, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 92, -1, -1));
 
+        checkBoxPeatonal.setText("Peatonal");
+        getContentPane().add(checkBoxPeatonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, -1, -1));
+
+        checkBoxVehicular.setSelected(true);
+        checkBoxVehicular.setText("Vehicular");
+        getContentPane().add(checkBoxVehicular, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox checkBoxPeatonal;
+    private javax.swing.JCheckBox checkBoxVehicular;
     private javax.swing.JButton ejecutorBoton;
     private javax.swing.ButtonGroup grupoDos;
     private javax.swing.ButtonGroup grupoUno;
@@ -106,5 +121,6 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JRadioButton opcRojo;
     private javax.swing.JRadioButton opcRomper;
     private javax.swing.JRadioButton opcVerde;
+    private javax.swing.ButtonGroup tipoSemaforoGroup;
     // End of variables declaration//GEN-END:variables
 }

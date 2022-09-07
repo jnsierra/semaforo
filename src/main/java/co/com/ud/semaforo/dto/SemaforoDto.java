@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package co.com.ud.semaforo.modelo;
+package co.com.ud.semaforo.dto;
 
 import co.com.ud.semaforo.enumeration.TipoSemaforo;
 import java.util.List;
@@ -15,13 +15,13 @@ import lombok.Data;
  */
 @Data
 @Builder
-public class SemaforoModel {
+public class SemaforoDto {
     
     private String titulo;
     private int x;
     private int y;
     private int numCopias;
     private TipoSemaforo tipoSemaforo;
-    private List<LuzSemaforoModel> luces;
+    private List<LuzSemaforoDto> luces;
     
 }

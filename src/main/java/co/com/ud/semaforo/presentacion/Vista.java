@@ -2,10 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package co.com.ud.semaforo.vista;
+package co.com.ud.semaforo.presentacion;
 
-import co.com.ud.semaforo.controlador.SemaforoControlador;
-import co.com.ud.semaforo.modelo.SemaforoModel;
+import co.com.ud.semaforo.dto.SemaforoDto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,8 +17,8 @@ import lombok.Setter;
 public class Vista extends javax.swing.JFrame {
 
     private Lienzo lienzo = new Lienzo();
-    private SemaforoModel semaforoVehicular;
-    private SemaforoModel semaforoPeatonal;
+    private SemaforoDto semaforoVehicular;
+    private SemaforoDto semaforoPeatonal;
     private SemaforoControlador semaforoControlador;
 
     /**

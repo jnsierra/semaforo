@@ -2,15 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package co.com.ud.semaforo.controlador;
+package co.com.ud.semaforo.presentacion;
 
 import co.com.ud.semaforo.enumeration.ColorEnum;
 import co.com.ud.semaforo.enumeration.EstadoEnum;
 import co.com.ud.semaforo.enumeration.TipoSemaforo;
 import co.com.ud.semaforo.logica.AccionSemaforoLogica;
-import co.com.ud.semaforo.modelo.LuzSemaforoModel;
-import co.com.ud.semaforo.modelo.SemaforoModel;
-import co.com.ud.semaforo.vista.Vista;
+import co.com.ud.semaforo.dto.LuzSemaforoDto;
+import co.com.ud.semaforo.dto.SemaforoDto;
+import co.com.ud.semaforo.presentacion.Vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -44,20 +44,20 @@ public class SemaforoControlador implements ActionListener {
     }
 
     public void iniciar() {
-        List<LuzSemaforoModel> luces = new ArrayList<>();
-        luces.add(LuzSemaforoModel.builder()
+        List<LuzSemaforoDto> luces = new ArrayList<>();
+        luces.add(LuzSemaforoDto.builder()
                 .color(ColorEnum.RED)
                 .estado(EstadoEnum.APAGADO)
                 .build());
-        luces.add(LuzSemaforoModel.builder()
+        luces.add(LuzSemaforoDto.builder()
                 .color(ColorEnum.ORANGE)
                 .estado(EstadoEnum.APAGADO)
                 .build());
-        luces.add(LuzSemaforoModel.builder()
+        luces.add(LuzSemaforoDto.builder()
                 .color(ColorEnum.GREEN)
                 .estado(EstadoEnum.APAGADO)
                 .build());
-        SemaforoModel semaforoUno = SemaforoModel.builder()
+        SemaforoDto semaforoUno = SemaforoDto.builder()
                 .numCopias(2)
                 .titulo("Semaforo de Vehicular")
                 .x(30)
@@ -67,16 +67,16 @@ public class SemaforoControlador implements ActionListener {
                 .build();
         
         
-        List<LuzSemaforoModel> lucesPeatonal = new ArrayList<>();
-        lucesPeatonal.add(LuzSemaforoModel.builder()
+        List<LuzSemaforoDto> lucesPeatonal = new ArrayList<>();
+        lucesPeatonal.add(LuzSemaforoDto.builder()
                 .color(ColorEnum.RED)
                 .estado(EstadoEnum.APAGADO)
                 .build());
-        lucesPeatonal.add(LuzSemaforoModel.builder()
+        lucesPeatonal.add(LuzSemaforoDto.builder()
                 .color(ColorEnum.GREEN)
                 .estado(EstadoEnum.APAGADO)
                 .build());
-        SemaforoModel semaforoDos = SemaforoModel.builder()
+        SemaforoDto semaforoDos = SemaforoDto.builder()
                 .numCopias(2)
                 .titulo("Semaforo Peatonal")
                 .x(30)

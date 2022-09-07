@@ -6,8 +6,8 @@ package co.com.ud.semaforo.logica;
 
 import co.com.ud.semaforo.enumeration.ColorEnum;
 import co.com.ud.semaforo.enumeration.EstadoEnum;
-import co.com.ud.semaforo.modelo.LuzSemaforoModel;
-import co.com.ud.semaforo.modelo.SemaforoModel;
+import co.com.ud.semaforo.dto.LuzSemaforoDto;
+import co.com.ud.semaforo.dto.SemaforoDto;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,9 +17,9 @@ import java.util.stream.Collectors;
  */
 public class AccionSemaforoLogica {
 
-    public SemaforoModel ejecutarAccionSemaforo(SemaforoModel semaforoVehicularModel, ColorEnum colorEnum, EstadoEnum estadoEnum) {        
-        List<LuzSemaforoModel> luces = semaforoVehicularModel.getLuces().stream().map(item -> {
-            if (colorEnum.equals(item.getColor())) {
+    public SemaforoDto ejecutarAccionSemaforo(SemaforoDto semaforoVehicularModel, ColorEnum colorEnum, EstadoEnum estadoEnum) {        
+        List<LuzSemaforoDto> luces = semaforoVehicularModel.getLuces().stream().map(item -> {
+            if (colorEnum.equals(item.getColor())&& item.getEstado().equals(EstadoEnum.APAGADO)) {
                 item.setEstado(estadoEnum);
             }
             if (colorEnum.equals(item.getColor())) {

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package co.com.ud.semaforo.modelo;
+package co.com.ud.semaforo.dto;
 
 import co.com.ud.semaforo.enumeration.ColorEnum;
 import co.com.ud.semaforo.enumeration.EstadoEnum;
@@ -15,7 +15,7 @@ import lombok.Data;
  */
 @Data
 @Builder
-public class LuzSemaforoModel {
+public class LuzSemaforoDto {
     
     private ColorEnum color;
     private EstadoEnum estado;

@@ -1,10 +1,10 @@
-package co.com.ud.semaforo.vista;
+package co.com.ud.semaforo.presentacion;
 
 import co.com.ud.semaforo.enumeration.ColorEnum;
 import co.com.ud.semaforo.enumeration.EstadoEnum;
 import co.com.ud.semaforo.enumeration.TipoSemaforo;
-import co.com.ud.semaforo.modelo.LuzSemaforoModel;
-import co.com.ud.semaforo.modelo.SemaforoModel;
+import co.com.ud.semaforo.dto.LuzSemaforoDto;
+import co.com.ud.semaforo.dto.SemaforoDto;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -22,10 +22,10 @@ public class Lienzo extends JPanel {
     private Graphics graphics;
     @Getter
     @Setter
-    private SemaforoModel semaforoVehicular;
+    private SemaforoDto semaforoVehicular;
     @Getter
     @Setter
-    private SemaforoModel semaforoPeatonal;
+    private SemaforoDto semaforoPeatonal;
 
     public void paintComponent(Graphics graphics) {
         this.graphics = graphics;
@@ -39,7 +39,7 @@ public class Lienzo extends JPanel {
         }
     }
 
-    public void pintarSemaforo(SemaforoModel semaforo) {
+    public void pintarSemaforo(SemaforoDto semaforo) {
         for (int i = 0; i < semaforo.getNumCopias(); i++) {
             int adicion = 200 * i;
 
@@ -83,9 +83,9 @@ public class Lienzo extends JPanel {
         }
     }
 
-    public void pintarLuces(SemaforoModel semaforo, int x, int y) {
+    public void pintarLuces(SemaforoDto semaforo, int x, int y) {
         if (Objects.nonNull(semaforo)) {
-            for (LuzSemaforoModel luz : semaforo.getLuces()) {
+            for (LuzSemaforoDto luz : semaforo.getLuces()) {
                 if (EstadoEnum.ENCENDIDO.equals(luz.getEstado()) || EstadoEnum.ROTO.equals(luz.getEstado())) {
                     int posicion = -1;
                     if (ColorEnum.RED.equals(luz.getColor())) {

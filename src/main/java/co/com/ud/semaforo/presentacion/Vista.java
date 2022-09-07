@@ -5,6 +5,7 @@
 package co.com.ud.semaforo.presentacion;
 
 import co.com.ud.semaforo.dto.SemaforoDto;
+import java.util.Objects;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,13 +21,17 @@ public class Vista extends javax.swing.JFrame {
     private SemaforoDto semaforoVehicular;
     private SemaforoDto semaforoPeatonal;
     private SemaforoControlador semaforoControlador;
+    private SemaforoModel semaforoModel;
 
     /**
      * Creates new form Vista
      * @param semaforoControlador Controlador de la vista
      */
-    public Vista(SemaforoControlador semaforoControlador) {
-        this.semaforoControlador = semaforoControlador;
+    public Vista(SemaforoModel semaforoModel) {
+        this.semaforoModel = semaforoModel;
+        if(Objects.isNull(this.semaforoControlador)){
+            this.semaforoControlador = new SemaforoControlador(this);
+        }
         this.setContentPane(lienzo);
         initComponents();
         capturarEventos();

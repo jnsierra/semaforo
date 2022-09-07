@@ -1,5 +1,4 @@
 
-import co.com.ud.semaforo.presentacion.SemaforoControlador;
 import co.com.ud.semaforo.presentacion.SemaforoModel;
 
 /**

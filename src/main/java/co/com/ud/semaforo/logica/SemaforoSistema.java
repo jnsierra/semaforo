@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  *
  * @author Usuario
  */
-public class AccionSemaforoLogica {
+public class SemaforoSistema {
 
     public SemaforoDto ejecutarAccionSemaforo(SemaforoDto semaforoVehicularModel, ColorEnum colorEnum, EstadoEnum estadoEnum) {        
         List<LuzSemaforoDto> luces = semaforoVehicularModel.getLuces().stream().map(item -> {

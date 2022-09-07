@@ -4,20 +4,9 @@
  */
 package co.com.ud.semaforo.presentacion;
 
-import co.com.ud.semaforo.enumeration.ColorEnum;
-import co.com.ud.semaforo.enumeration.EstadoEnum;
-import co.com.ud.semaforo.enumeration.TipoSemaforo;
-import co.com.ud.semaforo.logica.AccionSemaforoLogica;
-import co.com.ud.semaforo.dto.LuzSemaforoDto;
-import co.com.ud.semaforo.dto.SemaforoDto;
-import co.com.ud.semaforo.presentacion.Vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  *
@@ -25,7 +14,7 @@ import lombok.Setter;
  */
 public class SemaforoControlador implements ActionListener {
     @Getter
-    private Vista vista;
+    private final Vista vista;
     
     public SemaforoControlador(Vista ventana) {
         this.vista = ventana;

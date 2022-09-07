@@ -9,7 +9,7 @@ import co.com.ud.semaforo.dto.SemaforoDto;
 import co.com.ud.semaforo.enumeration.ColorEnum;
 import co.com.ud.semaforo.enumeration.EstadoEnum;
 import co.com.ud.semaforo.enumeration.TipoSemaforo;
-import co.com.ud.semaforo.logica.AccionSemaforoLogica;
+import co.com.ud.semaforo.logica.SemaforoSistema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -27,7 +27,7 @@ public class SemaforoModel {
     @Setter
     @Getter
     private Vista vista;
-    private AccionSemaforoLogica accionSemaforoLogica;
+    private SemaforoSistema accionSemaforoSistema;
 
     public SemaforoModel() {
         List<LuzSemaforoDto> luces = new ArrayList<>();
@@ -43,7 +43,7 @@ public class SemaforoModel {
                 .color(ColorEnum.GREEN)
                 .estado(EstadoEnum.APAGADO)
                 .build());
-        SemaforoDto semaforoUno = SemaforoDto.builder()
+        this.semaforoVehicular = SemaforoDto.builder()
                 .numCopias(2)
                 .titulo("Semaforo de Vehicular")
                 .x(30)
@@ -51,7 +51,6 @@ public class SemaforoModel {
                 .luces(luces)
                 .tipoSemaforo(TipoSemaforo.VEHICULAR)
                 .build();
-        
         
         List<LuzSemaforoDto> lucesPeatonal = new ArrayList<>();
         lucesPeatonal.add(LuzSemaforoDto.builder()
@@ -62,7 +61,7 @@ public class SemaforoModel {
                 .color(ColorEnum.GREEN)
                 .estado(EstadoEnum.APAGADO)
                 .build());
-        SemaforoDto semaforoDos = SemaforoDto.builder()
+        semaforoPeatonal = SemaforoDto.builder()
                 .numCopias(2)
                 .titulo("Semaforo Peatonal")
                 .x(30)
@@ -70,23 +69,24 @@ public class SemaforoModel {
                 .luces(lucesPeatonal)
                 .tipoSemaforo(TipoSemaforo.PEATONAL)
                 .build();
+        if (Objects.isNull(vista)) {
+            this.vista = new Vista(this);
+        }
+        if (Objects.isNull(accionSemaforoSistema)) {
+            this.accionSemaforoSistema = new SemaforoSistema();
+        }
     }
     
     
     
     public void iniciar() {
-        if (Objects.isNull(vista)) {
-            this.vista = new Vista(this);
-        }
-        if (Objects.isNull(accionSemaforoLogica)) {
-            this.accionSemaforoLogica = new AccionSemaforoLogica();
-        }
         getVista().setTitle("Vista Semaforo");
         getVista().setSize(800, 650);
         getVista().setVisible(true);
         vista.setSemaforoVehicular(semaforoVehicular);
         vista.setSemaforoPeatonal(semaforoPeatonal);
         vista.repintarSemaforos();
+
     }
     
     public ColorEnum validarEncendido() {
@@ -110,12 +110,12 @@ public class SemaforoModel {
     public void ejecutarAccion(){
         Boolean tipoSemaforoVehicular = vista.getCheckBoxVehicular().isSelected();
         if(tipoSemaforoVehicular){
-            vista.setSemaforoVehicular(this.accionSemaforoLogica.ejecutarAccionSemaforo(vista.getSemaforoVehicular(), validarEncendido(), validarEstado()));
+            vista.setSemaforoVehicular(this.accionSemaforoSistema.ejecutarAccionSemaforo(vista.getSemaforoVehicular(), validarEncendido(), validarEstado()));
         }
         
         Boolean tipoSemaforoPeatonal = vista.getCheckBoxPeatonal().isSelected();
         if(tipoSemaforoPeatonal){ //El caso que sea falso es por que fue seleccionado peatonal
-            vista.setSemaforoPeatonal(this.accionSemaforoLogica.ejecutarAccionSemaforo(vista.getSemaforoPeatonal(), validarEncendido(), validarEstado()));
+            vista.setSemaforoPeatonal(this.accionSemaforoSistema.ejecutarAccionSemaforo(vista.getSemaforoPeatonal(), validarEncendido(), validarEstado()));
         }
         this.vista.repintarSemaforos();
     

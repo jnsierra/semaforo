@@ -41,7 +41,7 @@ public class Vista extends javax.swing.JFrame {
         lienzo.setSemaforoVehicular(semaforoVehicular);
         lienzo.setSemaforoPeatonal(semaforoPeatonal);
         lienzo.repaint();
-        lienzo.revalidate();
+        //lienzo.revalidate();
     }
     
     private void capturarEventos(){

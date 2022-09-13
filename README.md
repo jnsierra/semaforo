@@ -1,13 +1,13 @@
-# Proyecto semaforo
+# Proyecto semáforo
 
 ### Descripción
 
-- Este proyecto consiste en la representación de un software para el control de una estación semaforica, de dos tipos de semaforo vehicular y peatonal ;con tres entradas y N intancias semaforicas de representación.
+- Este proyecto consiste en la representación de un software para el control de una estación semafórica, de dos tipos de semáforo vesicular y peatonal ;con tres entradas y N instancias semafóricas de representación.
 
-### Caracteristicas
+### Características
 
 - Aplicativo monolito
-- Arquitectura multicapa
+- Arquitectura multi capa
 - Implementación de modelo vista controlador
 - Multiplataforma para dispositivos que ejecuten JVM
 
@@ -19,7 +19,7 @@
 
 ### Ejecución
 
-Asegurese de estar en el directorio raiz; posteriormente, se ejecuta la limpieza y compilación del artefacto
+Asegúrese de estar en el directorio raíz; posteriormente, se ejecuta la limpieza y compilación del artefacto
 
 ```bash
 mvn -f  clean package
@@ -30,9 +30,9 @@ Ejecución del programa
 ```bash
 mvn exec:java
 ```
-De manera alternativa se puede ejecutar el metodo principal o launcher de la aplicación Launcher.java desde el IDE o consola 
+De manera alternativa se puede ejecutar el método principal o launcher de la aplicación Launcher.java desde el IDE o consola 
 
-Una vez se inicie la aplicación debe presentar la siguiente interface gráfica de usuario.
+Una vez se inicie la aplicación debe presentar la siguiente interfaz gráfica de usuario.
 
 ![](http://drive.google.com/uc?export=view&id=11dCM4AD5NOD2v2heKyuHEN5rZpQSPLpz)
 
@@ -40,7 +40,7 @@ Una vez se inicie la aplicación debe presentar la siguiente interface gráfica 
 
 Miguel Angel Mora
 Nicolas Sierra
-Jessid Escobar 
+Jessid Escobar
 
 ### Licencia
 

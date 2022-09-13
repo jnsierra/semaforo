@@ -39,7 +39,7 @@ public class Lienzo extends JPanel {
         }
     }
 
-    public void pintarSemaforo(SemaforoDto semaforo) {
+    private void pintarSemaforo(SemaforoDto semaforo) {
         for (int i = 0; i < semaforo.getNumCopias(); i++) {
             int adicion = 200 * i;
 
@@ -53,13 +53,13 @@ public class Lienzo extends JPanel {
 
     }
 
-    public void pintarFondoBlanco(int x, int y) {
+    private void pintarFondoBlanco(int x, int y) {
         graphics.setColor(Color.white);
         graphics.fillRect(x - 35, y - 20, 150, 200);
 
     }
 
-    public void pintarTitulo(int x, int y, int iterator, String titulo) {
+    private void pintarTitulo(int x, int y, int iterator, String titulo) {
         graphics.setColor(Color.BLACK);
         int fontSize = 10;
         Font f = new Font("Comic Sans MS", Font.BOLD, fontSize);
@@ -67,7 +67,7 @@ public class Lienzo extends JPanel {
         graphics.drawString(titulo + " (" + iterator + ")", x, y + 12);
     }
 
-    public void pintarCuadrado(int semaforoX, int semaforoY, int largo, int ancho, int items) {
+    private void pintarCuadrado(int semaforoX, int semaforoY, int largo, int ancho, int items) {
         graphics.setColor(Color.BLACK);
         //Cuadro principal semaforo
         //Lineas Vertical
@@ -83,7 +83,7 @@ public class Lienzo extends JPanel {
         }
     }
 
-    public void pintarLuces(SemaforoDto semaforo, int x, int y) {
+    private void pintarLuces(SemaforoDto semaforo, int x, int y) {
         if (Objects.nonNull(semaforo)) {
             for (LuzSemaforoDto luz : semaforo.getLuces()) {
                 if (EstadoEnum.ENCENDIDO.equals(luz.getEstado()) || EstadoEnum.ROTO.equals(luz.getEstado())) {

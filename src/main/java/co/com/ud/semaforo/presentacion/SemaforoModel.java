@@ -89,7 +89,7 @@ public class SemaforoModel {
 
     }
     
-    public ColorEnum validarEncendido() {
+    private ColorEnum validarEncendido() {
         if (vista.getOpcRojo().isSelected()) {
             return ColorEnum.RED;
         } else if (vista.getOpcAmarillo().isSelected()) {
@@ -98,7 +98,7 @@ public class SemaforoModel {
         return ColorEnum.GREEN;
     }
 
-    public EstadoEnum validarEstado() {
+    private EstadoEnum validarEstado() {
         if (getVista().getOpcEncender().isSelected()) {
             return EstadoEnum.ENCENDIDO;
         } else if (getVista().getOpcApagar().isSelected()) {

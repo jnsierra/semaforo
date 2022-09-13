@@ -1,4 +1,4 @@
-#Proyecto semaforo
+# Proyecto semaforo
 
 ### Descripción
 
@@ -9,9 +9,13 @@
 - Aplicativo monolito
 - Arquitectura multicapa
 - Implementación de modelo vista controlador
-- Multiplataforma para dispositivos que ejecuten JVM;
-- Java SE
+- Multiplataforma para dispositivos que ejecuten JVM
 
+### Herramientas 
+- Java SE
+- Maven 1.8
+- lombok 1.18.24
+- AbsoluteLayout Release 140
 
 ### Ejecución
 
@@ -48,4 +52,3 @@ Jessid Escobar
 [TOCM]
 
 [TOC]
-

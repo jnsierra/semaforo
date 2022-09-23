@@ -2,7 +2,7 @@ package co.com.ud.semaforo.presentacion;
 
 import co.com.ud.semaforo.enumeration.ColorEnum;
 import co.com.ud.semaforo.enumeration.EstadoEnum;
-import co.com.ud.semaforo.enumeration.TipoSemaforo;
+import co.com.ud.semaforo.enumeration.TipoSemaforoEnum;
 import co.com.ud.semaforo.dto.LuzSemaforoDto;
 import co.com.ud.semaforo.dto.SemaforoDto;
 import java.awt.Color;
@@ -30,10 +30,10 @@ public class Lienzo extends JPanel {
     public void paintComponent(Graphics graphics) {
         this.graphics = graphics;
         if (Objects.nonNull(this.semaforoVehicular)) {
-            if (TipoSemaforo.VEHICULAR.equals(semaforoVehicular.getTipoSemaforo())) {
+            if (TipoSemaforoEnum.VEHICULAR.equals(semaforoVehicular.getTipoSemaforo())) {
                 pintarSemaforo(semaforoVehicular);
             }
-            if (TipoSemaforo.PEATONAL.equals(semaforoPeatonal.getTipoSemaforo())) {
+            if (TipoSemaforoEnum.PEATONAL.equals(semaforoPeatonal.getTipoSemaforo())) {
                 pintarSemaforo(semaforoPeatonal);
             }
         }
@@ -98,7 +98,7 @@ public class Lienzo extends JPanel {
                     }
                     if (ColorEnum.GREEN.equals(luz.getColor())) {
                         graphics.setColor(Color.GREEN);
-                        if (TipoSemaforo.PEATONAL.equals(semaforo.getTipoSemaforo())) {
+                        if (TipoSemaforoEnum.PEATONAL.equals(semaforo.getTipoSemaforo())) {
                             posicion = 1;
                         } else {
                             posicion = 2;

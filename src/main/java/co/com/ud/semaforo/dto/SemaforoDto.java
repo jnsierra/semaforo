@@ -4,7 +4,7 @@
  */
 package co.com.ud.semaforo.dto;
 
-import co.com.ud.semaforo.enumeration.TipoSemaforo;
+import co.com.ud.semaforo.enumeration.TipoSemaforoEnum;
 import java.util.List;
 import lombok.Builder;
 import lombok.Data;
@@ -21,7 +21,7 @@ public class SemaforoDto {
     private int x;
     private int y;
     private int numCopias;
-    private TipoSemaforo tipoSemaforo;
+    private TipoSemaforoEnum tipoSemaforo;
     private List<LuzSemaforoDto> luces;
     
 }

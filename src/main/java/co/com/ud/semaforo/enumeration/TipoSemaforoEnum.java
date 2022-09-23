@@ -8,7 +8,7 @@ package co.com.ud.semaforo.enumeration;
  *
  * @author Usuario
  */
-public enum TipoSemaforo {
+public enum TipoSemaforoEnum {
     
     VEHICULAR, PEATONAL
     

@@ -60,71 +60,79 @@ public class Vista extends javax.swing.JFrame {
         grupoUno = new javax.swing.ButtonGroup();
         grupoDos = new javax.swing.ButtonGroup();
         tipoSemaforoGroup = new javax.swing.ButtonGroup();
-        opcRojo = new javax.swing.JRadioButton();
-        opcAmarillo = new javax.swing.JRadioButton();
-        opcVerde = new javax.swing.JRadioButton();
         ejecutorBoton = new javax.swing.JButton();
-        opcEncender = new javax.swing.JRadioButton();
-        opcApagar = new javax.swing.JRadioButton();
-        opcRomper = new javax.swing.JRadioButton();
-        checkBoxPeatonal = new javax.swing.JCheckBox();
-        checkBoxVehicular = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        ipTextField = new javax.swing.JTextField();
+        portTextField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        estadoLabel = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        msnServer = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        grupoUno.add(opcRojo);
-        opcRojo.setSelected(true);
-        opcRojo.setText("Rojo");
-        opcRojo.setToolTipText("");
-        getContentPane().add(opcRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(649, 40, -1, -1));
+        ejecutorBoton.setText("Conectar");
+        ejecutorBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ejecutorBotonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ejecutorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, -1, -1));
 
-        grupoUno.add(opcAmarillo);
-        opcAmarillo.setText("Amarillo");
-        getContentPane().add(opcAmarillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(649, 66, -1, -1));
+        jLabel1.setText("IP:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, -1, -1));
 
-        grupoUno.add(opcVerde);
-        opcVerde.setText("Verde");
-        getContentPane().add(opcVerde, new org.netbeans.lib.awtextra.AbsoluteConstraints(649, 92, -1, -1));
+        jLabel2.setText("PUERTO:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, -1, -1));
 
-        ejecutorBoton.setText("Ejecutar");
-        getContentPane().add(ejecutorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 170, -1, -1));
+        ipTextField.setText("localhost");
+        getContentPane().add(ipTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 110, -1));
 
-        grupoDos.add(opcEncender);
-        opcEncender.setText("Encender");
-        getContentPane().add(opcEncender, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 40, -1, -1));
+        portTextField.setText("1234");
+        portTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                portTextFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(portTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 110, -1));
 
-        grupoDos.add(opcApagar);
-        opcApagar.setSelected(true);
-        opcApagar.setText("Apagar");
-        getContentPane().add(opcApagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 66, -1, -1));
+        jLabel3.setText("Estado:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, -1, -1));
 
-        grupoDos.add(opcRomper);
-        opcRomper.setText("Romper");
-        getContentPane().add(opcRomper, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 92, -1, -1));
+        estadoLabel.setText("DESCONECTADO");
+        getContentPane().add(estadoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, 120, -1));
 
-        checkBoxPeatonal.setText("Peatonal");
-        getContentPane().add(checkBoxPeatonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, -1, -1));
+        jLabel4.setText("Mensaje enviado por el server");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, -1, -1));
 
-        checkBoxVehicular.setSelected(true);
-        checkBoxVehicular.setText("Vehicular");
-        getContentPane().add(checkBoxVehicular, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, -1, -1));
+        msnServer.setText("MSN");
+        getContentPane().add(msnServer, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, 200, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ejecutorBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejecutorBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ejecutorBotonActionPerformed
+
+    private void portTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_portTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_portTextFieldActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox checkBoxPeatonal;
-    private javax.swing.JCheckBox checkBoxVehicular;
     private javax.swing.JButton ejecutorBoton;
+    private javax.swing.JLabel estadoLabel;
     private javax.swing.ButtonGroup grupoDos;
     private javax.swing.ButtonGroup grupoUno;
-    private javax.swing.JRadioButton opcAmarillo;
-    private javax.swing.JRadioButton opcApagar;
-    private javax.swing.JRadioButton opcEncender;
-    private javax.swing.JRadioButton opcRojo;
-    private javax.swing.JRadioButton opcRomper;
-    private javax.swing.JRadioButton opcVerde;
+    private javax.swing.JTextField ipTextField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel msnServer;
+    private javax.swing.JTextField portTextField;
     private javax.swing.ButtonGroup tipoSemaforoGroup;
     // End of variables declaration//GEN-END:variables
 }

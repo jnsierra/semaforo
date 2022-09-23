@@ -6,7 +6,7 @@ import co.com.ud.semaforo.presentacion.SemaforoModel;
  * @author Usuario
  */
 public class Launcher {
-    
+
     private SemaforoModel miApp;
 
     public Launcher() {
@@ -18,3 +18,4 @@ public class Launcher {
         new Launcher();
     }
 }
+    

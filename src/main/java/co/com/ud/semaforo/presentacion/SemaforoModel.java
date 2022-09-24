@@ -14,6 +14,8 @@ import co.com.ud.semaforo.logica.SemaforoSistema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,7 +24,7 @@ import lombok.Setter;
  * @author sierraj
  */
 public class SemaforoModel {
-    
+
     private SemaforoDto semaforoVehicular;
     private SemaforoDto semaforoPeatonal;
     @Setter
@@ -53,7 +55,7 @@ public class SemaforoModel {
                 .luces(luces)
                 .tipoSemaforo(TipoSemaforoEnum.VEHICULAR)
                 .build();
-        
+
         List<LuzSemaforoDto> lucesPeatonal = new ArrayList<>();
         lucesPeatonal.add(LuzSemaforoDto.builder()
                 .color(ColorEnum.RED)
@@ -77,13 +79,12 @@ public class SemaforoModel {
         if (Objects.isNull(accionSemaforoSistema)) {
             this.accionSemaforoSistema = new SemaforoSistema();
         }
-        if (Objects.isNull(ejecutaAccionLogica)){
-            this.ejecutaAccionLogica = new EjecutaAccionLogica(vista);
+        if (Objects.isNull(ejecutaAccionLogica)) {
+            this.ejecutaAccionLogica = new EjecutaAccionLogica(vista,semaforoVehicular, semaforoPeatonal);
+            this.ejecutaAccionLogica.start();
         }
     }
-    
-    
-    
+
     public void iniciar() {
         getVista().setTitle("Vista Semaforo");
         getVista().setSize(800, 650);
@@ -93,8 +94,8 @@ public class SemaforoModel {
         vista.repintarSemaforos();
 
     }
-    
-    public void ejecutarAccion(String mensaje){
+
+    public void ejecutarAccion(String mensaje) {
         this.ejecutaAccionLogica.ejecutarAccionSemaforo(mensaje);
         
     }

@@ -1,5 +1,6 @@
 package co.com.ud.semaforo.dto;
 
+import co.com.ud.semaforo.enumeration.EstadoEnum;
 import lombok.Data;
 
 /**
@@ -10,8 +11,8 @@ import lombok.Data;
 public class AccionSemaforoDto {
     
     private Boolean intermitencia;
-    private Boolean rojo;
-    private Boolean naranja;
-    private Boolean verde;
+    private EstadoEnum rojo;
+    private EstadoEnum naranja;
+    private EstadoEnum verde;
     
 }

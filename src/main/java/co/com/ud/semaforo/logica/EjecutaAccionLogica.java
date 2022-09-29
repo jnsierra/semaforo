@@ -5,7 +5,6 @@
 package co.com.ud.semaforo.logica;
 
 import co.com.ud.semaforo.dto.AccionSemaforoDto;
-import co.com.ud.semaforo.dto.LuzSemaforoDto;
 import co.com.ud.semaforo.dto.SemaforoDto;
 import co.com.ud.semaforo.enumeration.ColorEnum;
 import co.com.ud.semaforo.enumeration.EstadoEnum;

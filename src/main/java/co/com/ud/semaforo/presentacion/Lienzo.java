@@ -22,19 +22,27 @@ public class Lienzo extends JPanel {
     private Graphics graphics;
     @Getter
     @Setter
-    private SemaforoDto semaforoVehicular;
+    private SemaforoDto semaforoUno;
     @Getter
     @Setter
-    private SemaforoDto semaforoPeatonal;
+    private SemaforoDto semaforoDos;
 
     public void paintComponent(Graphics graphics) {
         this.graphics = graphics;
-        if (Objects.nonNull(this.semaforoVehicular)) {
-            if (TipoSemaforoEnum.VEHICULAR.equals(semaforoVehicular.getTipoSemaforo())) {
-                pintarSemaforo(semaforoVehicular);
+        if (Objects.nonNull(this.semaforoUno)) {
+            if (TipoSemaforoEnum.VEHICULAR.equals(semaforoUno.getTipoSemaforo())) {
+                pintarSemaforo(semaforoUno);
             }
-            if (TipoSemaforoEnum.PEATONAL.equals(semaforoPeatonal.getTipoSemaforo())) {
-                pintarSemaforo(semaforoPeatonal);
+            if (TipoSemaforoEnum.PEATONAL.equals(semaforoUno.getTipoSemaforo())) {
+                pintarSemaforo(semaforoUno);
+            }
+        }
+        if (Objects.nonNull(this.semaforoDos)) {
+            if (TipoSemaforoEnum.VEHICULAR.equals(semaforoDos.getTipoSemaforo())) {
+                pintarSemaforo(semaforoDos);
+            }
+            if (TipoSemaforoEnum.PEATONAL.equals(semaforoDos.getTipoSemaforo())) {
+                pintarSemaforo(semaforoDos);
             }
         }
     }

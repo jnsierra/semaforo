@@ -4,18 +4,11 @@
  */
 package co.com.ud.semaforo.presentacion;
 
-import co.com.ud.semaforo.dto.LuzSemaforoDto;
 import co.com.ud.semaforo.dto.SemaforoDto;
-import co.com.ud.semaforo.enumeration.ColorEnum;
-import co.com.ud.semaforo.enumeration.EstadoEnum;
-import co.com.ud.semaforo.enumeration.TipoSemaforoEnum;
 import co.com.ud.semaforo.logica.EjecutaAccionLogica;
 import co.com.ud.semaforo.logica.SemaforoSistema;
-import java.util.ArrayList;
-import java.util.List;
+import co.com.ud.semaforo.util.UtilSemaforo;
 import java.util.Objects;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,56 +25,19 @@ public class SemaforoModel {
     private Vista vista;
     private SemaforoSistema accionSemaforoSistema;
     private EjecutaAccionLogica ejecutaAccionLogica;
+    @Setter
+    @Getter
+    private Integer id; 
+    @Setter
+    @Getter
+    private String nombre;
 
     public SemaforoModel() {
-        List<LuzSemaforoDto> luces = new ArrayList<>();
-        luces.add(LuzSemaforoDto.builder()
-                .color(ColorEnum.RED)
-                .estado(EstadoEnum.APAGADO)
-                .build());
-        luces.add(LuzSemaforoDto.builder()
-                .color(ColorEnum.ORANGE)
-                .estado(EstadoEnum.APAGADO)
-                .build());
-        luces.add(LuzSemaforoDto.builder()
-                .color(ColorEnum.GREEN)
-                .estado(EstadoEnum.APAGADO)
-                .build());
-        this.semaforoVehicular = SemaforoDto.builder()
-                .numCopias(2)
-                .titulo("Semaforo de Vehicular")
-                .x(30)
-                .y(100)
-                .luces(luces)
-                .tipoSemaforo(TipoSemaforoEnum.VEHICULAR)
-                .build();
-
-        List<LuzSemaforoDto> lucesPeatonal = new ArrayList<>();
-        lucesPeatonal.add(LuzSemaforoDto.builder()
-                .color(ColorEnum.RED)
-                .estado(EstadoEnum.APAGADO)
-                .build());
-        lucesPeatonal.add(LuzSemaforoDto.builder()
-                .color(ColorEnum.GREEN)
-                .estado(EstadoEnum.APAGADO)
-                .build());
-        semaforoPeatonal = SemaforoDto.builder()
-                .numCopias(2)
-                .titulo("Semaforo Peatonal")
-                .x(30)
-                .y(330)
-                .luces(lucesPeatonal)
-                .tipoSemaforo(TipoSemaforoEnum.PEATONAL)
-                .build();
         if (Objects.isNull(vista)) {
             this.vista = new Vista(this);
         }
         if (Objects.isNull(accionSemaforoSistema)) {
             this.accionSemaforoSistema = new SemaforoSistema();
-        }
-        if (Objects.isNull(ejecutaAccionLogica)) {
-            this.ejecutaAccionLogica = new EjecutaAccionLogica(vista,semaforoVehicular, semaforoPeatonal);
-            this.ejecutaAccionLogica.start();
         }
     }
 
@@ -89,14 +45,43 @@ public class SemaforoModel {
         getVista().setTitle("Vista Semaforo");
         getVista().setSize(800, 650);
         getVista().setVisible(true);
-        vista.setSemaforoVehicular(semaforoVehicular);
-        vista.setSemaforoPeatonal(semaforoPeatonal);
-        vista.repintarSemaforos();
-
     }
 
     public void ejecutarAccion(String mensaje) {
-        this.ejecutaAccionLogica.ejecutarAccionSemaforo(mensaje);
-        
+        this.ejecutaAccionLogica.ejecutarAccionSemaforo(mensaje); 
     }
+    
+    public void mensajeInicial(String mensaje){
+        String[] valores = mensaje.split("\\|");
+        this.setId(Integer.parseInt(valores[1]));
+        this.setNombre(valores[2]);
+        this.vista.getLabelId().setText(this.getId().toString());
+        this.vista.getLabelNombre().setText(this.getNombre());
+    }
+    
+    public void incializarSemaforo(String mensaje){
+        String[] valores = mensaje.split("\\|");
+        //Inicializamos el primer semaforo
+        if("vehicular".equalsIgnoreCase(valores[1])){
+            semaforoVehicular = UtilSemaforo.inicializarSemaforoVehicular(20, 20);
+        }else{
+            semaforoVehicular = UtilSemaforo.inicializarSemaforoPeatonal(20,20);
+        }
+        
+        if("vehicular".equalsIgnoreCase(valores[2])){
+            semaforoPeatonal = UtilSemaforo.inicializarSemaforoVehicular(20, 200);
+        }else{
+            semaforoPeatonal = UtilSemaforo.inicializarSemaforoPeatonal(20,220);
+        }
+        vista.setSemaforoVehicular(semaforoVehicular);
+        vista.setSemaforoPeatonal(semaforoPeatonal);
+        vista.repintarSemaforos();
+        UtilSemaforo.esperarHilo(1000L);
+        if (Objects.isNull(ejecutaAccionLogica)) {
+            this.ejecutaAccionLogica = new EjecutaAccionLogica(vista,semaforoVehicular, semaforoPeatonal);
+        }
+        this.ejecutaAccionLogica.start();
+    }
+    
+    
 }

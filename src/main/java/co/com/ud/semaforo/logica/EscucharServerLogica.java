@@ -8,6 +8,7 @@ import co.com.ud.semaforo.presentacion.Vista;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.Objects;
 import org.apache.log4j.Logger;
 
 /**
@@ -44,7 +45,14 @@ public class EscucharServerLogica extends Thread{
             try {
                 mensaje = entradaDatos.readUTF();
                 vista.getMsnServer().setText(mensaje);
-                vista.getSemaforoModel().ejecutarAccion(mensaje);
+                if(Objects.nonNull(mensaje) && mensaje.contains("MSNSISTEMA")){
+                    vista.getSemaforoModel().mensajeInicial(mensaje);
+                }else if(Objects.nonNull(mensaje) && mensaje.contains("MSNINISEMAFORO")){
+                    vista.getSemaforoModel().incializarSemaforo(mensaje);
+                }else{
+                    vista.getSemaforoModel().ejecutarAccion(mensaje);
+                }
+                
             } catch (IOException ex) {
                 log.error("Error al leer del stream de entrada: " + ex.getMessage());
                 conectado = false;

@@ -38,8 +38,8 @@ public class Vista extends javax.swing.JFrame {
     }
 
     public void repintarSemaforos() {
-        lienzo.setSemaforoVehicular(semaforoVehicular);
-        lienzo.setSemaforoPeatonal(semaforoPeatonal);
+        lienzo.setSemaforoUno(semaforoVehicular);
+        lienzo.setSemaforoDos(semaforoPeatonal);
         lienzo.repaint();
         //lienzo.revalidate();
     }
@@ -69,6 +69,10 @@ public class Vista extends javax.swing.JFrame {
         estadoLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         msnServer = new javax.swing.JLabel();
+        labelNombre = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        labelId = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -110,6 +114,18 @@ public class Vista extends javax.swing.JFrame {
         msnServer.setText("MSN");
         getContentPane().add(msnServer, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, 200, -1));
 
+        labelNombre.setText("ESTE ES EL NOMBRE");
+        getContentPane().add(labelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 130, -1));
+
+        jLabel6.setText("ID:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 20, -1));
+
+        jLabel7.setText("NOMBRE:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 70, -1));
+
+        labelId.setText("ESTE ES EL ID");
+        getContentPane().add(labelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 90, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -131,6 +147,10 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel labelId;
+    private javax.swing.JLabel labelNombre;
     private javax.swing.JLabel msnServer;
     private javax.swing.JTextField portTextField;
     private javax.swing.ButtonGroup tipoSemaforoGroup;

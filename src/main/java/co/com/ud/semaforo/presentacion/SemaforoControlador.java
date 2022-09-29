@@ -44,7 +44,5 @@ public class SemaforoControlador implements ActionListener {
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "El puerto debe ser numerico");
         }
-       //getVista().getSemaforoModel().ejecutarAccion();
-       //getVista().getSemaforoModel().ejecutarAccion();
     }
 }

@@ -28,7 +28,7 @@ public class UtilSemaforo {
         return numero;
     }
     
-    public static SemaforoDto inicializarSemaforoVehicular(int x, int y){
+    public static SemaforoDto inicializarSemaforoVehicular(int x, int y, int copias){
         List<LuzSemaforoDto> luces = new ArrayList<>();
         luces.add(LuzSemaforoDto.builder()
                 .color(ColorEnum.RED)
@@ -43,7 +43,7 @@ public class UtilSemaforo {
                 .estado(EstadoEnum.APAGADO)
                 .build());
         return SemaforoDto.builder()
-                .numCopias(2)
+                .numCopias(copias)
                 .titulo("Semaforo de Vehicular")
                 .x(x)
                 .y(y)
@@ -52,7 +52,7 @@ public class UtilSemaforo {
                 .build();
     }
     
-    public static SemaforoDto inicializarSemaforoPeatonal(int x, int y){
+    public static SemaforoDto inicializarSemaforoPeatonal(int x, int y, int copias){
         List<LuzSemaforoDto> lucesPeatonal = new ArrayList<>();
         lucesPeatonal.add(LuzSemaforoDto.builder()
                 .color(ColorEnum.RED)
@@ -63,13 +63,21 @@ public class UtilSemaforo {
                 .estado(EstadoEnum.APAGADO)
                 .build());
         return SemaforoDto.builder()
-                .numCopias(2)
+                .numCopias(copias)
                 .titulo("Semaforo Peatonal")
                 .x(x)
                 .y(y)
                 .luces(lucesPeatonal)
                 .tipoSemaforo(TipoSemaforoEnum.PEATONAL)
                 .build();
+    }
+    
+    public static SemaforoDto inicializarSemaforo(int x, int y, String tipo, int copias){
+        if("vehicular".equalsIgnoreCase(tipo)){
+            return UtilSemaforo.inicializarSemaforoVehicular(x, y, copias);
+        }else{
+            return UtilSemaforo.inicializarSemaforoPeatonal(x, y, copias);
+        }
     }
     
     public static void esperarHilo(long time){

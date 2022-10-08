@@ -32,6 +32,7 @@ public class ConexionServerLogica {
         try {
             this.socket = new Socket(this.ip, this.puerto);
         } catch (IOException ex) {
+            ex.printStackTrace();
             return Boolean.FALSE;
         }
         return Boolean.TRUE;

@@ -98,24 +98,26 @@ public class EjecutaAccionLogica extends Thread {
 
     public Boolean cambiaSemaforos(Boolean intermitencia) {
         //Interpretamos los cambios que se deben realizar
-        if (Objects.nonNull(accionSemaforoUno) &&  accionSemaforoUno.getIntermitencia()) {
+        if (Objects.nonNull(getSemaforoVehicular()) && Objects.nonNull(accionSemaforoUno) &&  accionSemaforoUno.getIntermitencia()) {
             if (intermitencia) {
                 this.cambiaLuces(accionSemaforoUno, getSemaforoVehicular());
             } else {
                 this.apagaSemaforo(getSemaforoVehicular());
             }
 
-        }else if(Objects.nonNull(accionSemaforoUno) && cambioAccion){
+        }else if(Objects.nonNull(getSemaforoVehicular()) && Objects.nonNull(accionSemaforoUno) && cambioAccion){
             this.cambiaLuces(accionSemaforoUno, getSemaforoVehicular());
         }
-        if (Objects.nonNull(accionSemaforoUno) && accionSemaforoDos.getIntermitencia()) {
+        
+        
+        if (Objects.nonNull(getSemaforoPeatonal()) && Objects.nonNull(accionSemaforoDos) && accionSemaforoDos.getIntermitencia()) {
             if (intermitencia) {
                 this.cambiaLuces(accionSemaforoDos, getSemaforoPeatonal());
             } else {
                 this.apagaSemaforo(getSemaforoPeatonal());
             }
 
-        }else if(Objects.nonNull(accionSemaforoUno) && cambioAccion){
+        }else if(Objects.nonNull(getSemaforoPeatonal()) && Objects.nonNull(accionSemaforoDos) && cambioAccion){
              this.cambiaLuces(accionSemaforoDos, getSemaforoPeatonal());
         }
         cambioAccion = Boolean.FALSE;
@@ -124,6 +126,9 @@ public class EjecutaAccionLogica extends Thread {
 
     public void cambiaLuces(AccionSemaforoDto accionSemaforoDto, SemaforoDto semaforoDto) {
         if (Objects.nonNull(accionSemaforoDto)) {
+            if(Objects.isNull(semaforoDto)  ){
+                System.out.println("Este es el error");
+            }
 
             semaforoDto.getLuces().stream().parallel().forEach(item -> {
                 if (ColorEnum.RED.equals(item.getColor())) {

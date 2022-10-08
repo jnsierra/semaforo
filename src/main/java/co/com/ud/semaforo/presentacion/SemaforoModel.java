@@ -5,9 +5,15 @@
 package co.com.ud.semaforo.presentacion;
 
 import co.com.ud.semaforo.dto.SemaforoDto;
+import co.com.ud.semaforo.dto.SemaforoMsnDto;
 import co.com.ud.semaforo.logica.EjecutaAccionLogica;
 import co.com.ud.semaforo.logica.SemaforoSistema;
 import co.com.ud.semaforo.util.UtilSemaforo;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import lombok.Getter;
 import lombok.Setter;
@@ -61,18 +67,12 @@ public class SemaforoModel {
     
     public void incializarSemaforo(String mensaje){
         String[] valores = mensaje.split("\\|");
-        //Inicializamos el primer semaforo
-        if("vehicular".equalsIgnoreCase(valores[1])){
-            semaforoVehicular = UtilSemaforo.inicializarSemaforoVehicular(20, 20);
-        }else{
-            semaforoVehicular = UtilSemaforo.inicializarSemaforoPeatonal(20,20);
-        }
+        //Iniciamos la conversion de los semaforos
+        Gson gson = new Gson();
+        Type semaforoListType = new TypeToken<ArrayList<SemaforoMsnDto>>(){}.getType();
+        ArrayList<SemaforoMsnDto> semaforoArray = gson.fromJson(valores[1], semaforoListType);  
+        instanceSemaforo(semaforoArray);
         
-        if("vehicular".equalsIgnoreCase(valores[2])){
-            semaforoPeatonal = UtilSemaforo.inicializarSemaforoVehicular(20, 200);
-        }else{
-            semaforoPeatonal = UtilSemaforo.inicializarSemaforoPeatonal(20,220);
-        }
         vista.setSemaforoVehicular(semaforoVehicular);
         vista.setSemaforoPeatonal(semaforoPeatonal);
         vista.repintarSemaforos();
@@ -81,6 +81,17 @@ public class SemaforoModel {
             this.ejecutaAccionLogica = new EjecutaAccionLogica(vista,semaforoVehicular, semaforoPeatonal);
         }
         this.ejecutaAccionLogica.start();
+    }
+    
+    public void instanceSemaforo(List<SemaforoMsnDto> semaforos){
+        if(Objects.nonNull(semaforos) && !semaforos.isEmpty()){
+            if(semaforos.size() > 0){
+                this.semaforoVehicular = UtilSemaforo.inicializarSemaforo(20, 20, semaforos.get(0).getTipo(), semaforos.get(0).getCantidad());
+            }
+            if(semaforos.size() > 1){
+                this.semaforoPeatonal = UtilSemaforo.inicializarSemaforo(20, 220, semaforos.get(1).getTipo(), semaforos.get(0).getCantidad());
+            }
+        }
     }
     
     

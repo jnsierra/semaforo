@@ -83,16 +83,16 @@ public class Vista extends javax.swing.JFrame {
                 ejecutorBotonActionPerformed(evt);
             }
         });
-        getContentPane().add(ejecutorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, -1, -1));
+        getContentPane().add(ejecutorBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 570, 90, -1));
 
         jLabel1.setText("IP:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 500, 30, -1));
 
         jLabel2.setText("PUERTO:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 70, -1));
 
         ipTextField.setText("localhost");
-        getContentPane().add(ipTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 110, -1));
+        getContentPane().add(ipTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 500, 120, -1));
 
         portTextField.setText("1234");
         portTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -100,31 +100,31 @@ public class Vista extends javax.swing.JFrame {
                 portTextFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(portTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 110, -1));
+        getContentPane().add(portTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 530, 120, -1));
 
         jLabel3.setText("Estado:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 500, -1, -1));
 
         estadoLabel.setText("DESCONECTADO");
-        getContentPane().add(estadoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, 120, -1));
+        getContentPane().add(estadoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 500, 120, -1));
 
         jLabel4.setText("Mensaje enviado por el server");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 460, -1, -1));
 
         msnServer.setText("MSN");
-        getContentPane().add(msnServer, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, 200, -1));
+        getContentPane().add(msnServer, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 500, 200, -1));
 
         labelNombre.setText("ESTE ES EL NOMBRE");
-        getContentPane().add(labelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 130, -1));
+        getContentPane().add(labelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 320, -1));
 
         jLabel6.setText("ID:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 20, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 550, 20, -1));
 
         jLabel7.setText("NOMBRE:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 70, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 70, -1));
 
         labelId.setText("ESTE ES EL ID");
-        getContentPane().add(labelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 90, -1));
+        getContentPane().add(labelId, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 550, 90, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
